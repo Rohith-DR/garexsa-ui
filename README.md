@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Garexsa UI Logo](icon.png)
+<img src="icon.png" alt="Garexsa UI Logo" width="200" />
 
 **Desktop AI Chat Application Powered by Gemma 4**
 
