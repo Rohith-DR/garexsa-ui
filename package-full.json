@@ -1,7 +1,7 @@
 {
   "appId": "com.garexsa.ui.full",
   "productName": "Garexsa UI Full",
-  "compression": "normal",
+  "compression": "store",
   "directories": {
     "output": "dist-full"
   },
@@ -11,41 +11,34 @@
     "loading.html",
     "setup.html",
     "frontend/**/*",
-    "icon.ico",
     "icon.png"
   ],
-  "win": {
+  "linux": {
+    "maintainer": "Garexsa Team <info@garexsa.local>",
     "target": [
       {
-        "target": "portable",
+        "target": "dir",
         "arch": [
           "x64"
         ]
       }
     ],
-    "icon": "icon.ico",
-    "sign": false,
-    "signingHashAlgorithms": []
-  },
-  "portable": {
-    "artifactName": "GarexsaUI-Full-Portable-${version}.exe"
+    "icon": "icon.png",
+    "category": "Utility",
+    "synopsis": "Chat with Gemma 4 AI Model (Model Included)",
+    "description": "Garexsa UI is a desktop application for chatting with the Gemma 4 AI model locally. This full version includes the Gemma 4 model and is ready to use immediately.",
+    "desktop": {
+      "Name": "Garexsa UI Full",
+      "Comment": "Chat with Gemma 4 AI",
+      "Categories": "Utility;AI;Chat",
+      "Terminal": false,
+      "StartupWMClass": "garexsa-ui-full"
+    }
   },
   "extraResources": [
     {
-      "from": "backend/python-embed",
-      "to": "backend/python-embed"
-    },
-    {
-      "from": "backend/wheels",
-      "to": "backend/wheels"
-    },
-    {
-      "from": "backend/setup_venv.py",
-      "to": "backend/setup_venv.py"
-    },
-    {
-      "from": "backend/models",
-      "to": "backend/models",
+      "from": "backend",
+      "to": "backend",
       "filter": [
         "**/*"
       ]

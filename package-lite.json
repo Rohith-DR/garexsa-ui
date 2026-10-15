@@ -11,36 +11,48 @@
     "loading.html",
     "setup.html",
     "frontend/**/*",
-    "icon.ico",
     "icon.png"
   ],
-  "win": {
+  "linux": {
+    "maintainer": "Garexsa Team <info@garexsa.local>",
     "target": [
       {
-        "target": "nsis",
+        "target": "deb",
         "arch": [
           "x64"
         ]
       }
     ],
-    "icon": "icon.ico",
-    "sign": false,
-    "signingHashAlgorithms": []
+    "icon": "icon.png",
+    "category": "Utility",
+    "synopsis": "Chat with Gemma 4 AI Model",
+    "description": "Garexsa UI is a desktop application for chatting with the Gemma 4 AI model locally. Download the model separately and place it in the models folder.",
+    "desktop": {
+      "Name": "Garexsa UI",
+      "Comment": "Chat with Gemma 4 AI",
+      "Categories": "Utility;AI;Chat",
+      "Terminal": false,
+      "StartupWMClass": "garexsa-ui"
+    }
   },
-  "nsis": {
-    "oneClick": false,
-    "allowToChangeInstallationDirectory": true,
-    "createDesktopShortcut": true,
-    "createStartMenuShortcut": true,
-    "shortcutName": "Garexsa UI",
-    "artifactName": "GarexsaUI-Setup-${version}.exe",
-    "installerIcon": "icon.ico",
-    "uninstallerIcon": "icon.ico",
-    "installerHeaderIcon": "icon.ico",
-    "deleteAppDataOnUninstall": false,
-    "license": "LICENSE.txt",
-    "warningsAsErrors": false,
-    "include": "build/installer.nsh"
+  "deb": {
+    "packageName": "garexsa-ui",
+    "depends": [
+      "libnotify4",
+      "libxtst6",
+      "libnss3",
+      "libatk1.0-0",
+      "libatk-bridge2.0-0",
+      "libcups2",
+      "libdrm2",
+      "libgtk-3-0",
+      "libgbm1",
+      "libasound2",
+      "python3",
+      "python3-venv",
+      "python3-pip"
+    ],
+    "afterInstall": "build/post-install.sh"
   },
   "extraResources": [
     {
