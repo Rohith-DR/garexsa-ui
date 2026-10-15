@@ -1,0 +1,61 @@
+{
+  "name": "garexsa-ui",
+  "version": "1.0.0",
+  "description": "Garexsa UI - Chat with Gemma 4 AI Model",
+  "main": "main.js",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-lite": "electron-builder --config package-lite.json",
+    "build-full": "electron-builder --config package-full.json"
+  },
+  "build": {
+    "appId": "com.garexsa.ui",
+    "productName": "Garexsa UI",
+    "compression": "normal",
+    "directories": {
+      "output": "dist-electron"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "loading.html",
+      "frontend/**/*",
+      "icon.ico",
+      "icon.png"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "icon.ico",
+      "sign": false,
+      "signingHashAlgorithms": []
+    },
+    "portable": {
+      "artifactName": "GarexsaUI-Portable.exe",
+      "unicode": false
+    },
+    "extraResources": [
+      {
+        "from": "backend",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "devDependencies": {
+    "@electron/asar": "^4.3.1",
+    "electron": "^28.0.0",
+    "electron-builder": "^24.9.1"
+  }
+}

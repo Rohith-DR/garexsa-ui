@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setting up Garexsa UI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .setup-container {
+            text-align: center;
+            max-width: 600px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #4CAF50;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        h2 {
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            color: #aaa;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        
+        .status-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        #status {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 13px;
+            color: #4CAF50;
+            text-align: left;
+            max-height: 200px;
+            overflow-y: auto;
+            line-height: 1.6;
+        }
+        
+        #status::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        #status::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+        
+        #status::-webkit-scrollbar-thumb {
+            background: rgba(76, 175, 80, 0.3);
+            border-radius: 3px;
+        }
+        
+        #status::-webkit-scrollbar-thumb:hover {
+            background: rgba(76, 175, 80, 0.5);
+        }
+        
+        .status-line {
+            margin-bottom: 5px;
+            opacity: 0;
+            animation: fadeIn 0.3s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            width: 0%;
+            animation: progress 45s linear forwards;
+        }
+        
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 95%; }
+        }
+        
+        .time-estimate {
+            color: #888;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="setup-container">
+        <div class="logo">Garexsa UI</div>
+        <div class="spinner"></div>
+        <h2>Setting Up Backend</h2>
+        <p class="subtitle">This only happens on first launch</p>
+        
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        <p class="time-estimate">Estimated time: 15-30 seconds</p>
+        
+        <div class="status-container">
+            <div id="status">
+                <div class="status-line">Initializing setup...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Listen for status updates from main process
+        if (window.electronAPI && window.electronAPI.onSetupStatus) {
+            window.electronAPI.onSetupStatus((message) => {
+                const statusDiv = document.getElementById('status');
+                const line = document.createElement('div');
+                line.className = 'status-line';
+                line.textContent = message;
+                statusDiv.appendChild(line);
+                
+                // Auto-scroll to bottom
+                statusDiv.scrollTop = statusDiv.scrollHeight;
+            });
+        }
+    </script>
+</body>
+</html>

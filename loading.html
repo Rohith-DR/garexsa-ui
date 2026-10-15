@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Loading Garexsa UI</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #1a1a2e;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+      overflow: hidden;
+    }
+    .loading-container {
+      text-align: center;
+      padding: 40px;
+      max-width: 400px;
+    }
+    .logo {
+      font-size: 56px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .loading-text {
+      font-size: 16px;
+      margin-bottom: 32px;
+      opacity: 0.8;
+      font-weight: 400;
+    }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 24px;
+      border: 3px solid rgba(102, 126, 234, 0.2);
+      border-top-color: #667eea;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .status {
+      font-size: 13px;
+      opacity: 0.5;
+      font-weight: 300;
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-container">
+    <div class="logo">GAREXSA</div>
+    <div class="loading-text">Initializing AI workspace...</div>
+    <div class="spinner"></div>
+    <div class="status" id="status">Loading components</div>
+  </div>
+  <script>
+    const msgs = ['Loading components', 'Starting backend', 'Preparing interface', 'Almost ready'];
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % msgs.length;
+      document.getElementById('status').textContent = msgs[i];
+    }, 800);
+  </script>
+</body>
+</html>

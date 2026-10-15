@@ -1,0 +1,71 @@
+{
+  "appId": "com.garexsa.ui",
+  "productName": "Garexsa UI",
+  "compression": "normal",
+  "directories": {
+    "output": "dist-lite"
+  },
+  "files": [
+    "main.js",
+    "preload.js",
+    "loading.html",
+    "setup.html",
+    "frontend/**/*",
+    "icon.ico",
+    "icon.png"
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "icon": "icon.ico",
+    "sign": false,
+    "signingHashAlgorithms": []
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Garexsa UI",
+    "artifactName": "GarexsaUI-Setup-${version}.exe",
+    "installerIcon": "icon.ico",
+    "uninstallerIcon": "icon.ico",
+    "installerHeaderIcon": "icon.ico",
+    "deleteAppDataOnUninstall": false,
+    "license": "LICENSE.txt",
+    "warningsAsErrors": false,
+    "include": "build/installer.nsh"
+  },
+  "extraResources": [
+    {
+      "from": "backend/python-embed",
+      "to": "backend/python-embed"
+    },
+    {
+      "from": "backend/wheels",
+      "to": "backend/wheels"
+    },
+    {
+      "from": "backend/setup_venv.py",
+      "to": "backend/setup_venv.py"
+    },
+    {
+      "from": "backend/models",
+      "to": "backend/models",
+      "filter": [
+        "**/*",
+        "!gemma-4-E2B-it.litertlm/**"
+      ]
+    },
+    {
+      "from": "build/README.txt",
+      "to": "README.txt"
+    }
+  ]
+}

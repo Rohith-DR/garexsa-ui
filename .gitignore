@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+dist-lite/
+dist-full/
+out/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/litert-lm-venv/
+backend/.venv/
+
+# Backend bundles (too large for git)
+backend/python-embed/
+backend/wheels/
+backend/models/
+
+# User data
+.litert-lm/
+
+# Electron
+*.asar
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Temporary
+*.tmp
+*.temp
+.cache/
