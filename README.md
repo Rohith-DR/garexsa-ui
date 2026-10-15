@@ -68,10 +68,6 @@ sudo dpkg -i garexsa-ui_1.0.0_amd64.deb
 # Launch
 garexsa-ui
 ```
-
-### Portable Versions
-Extract and run - model is pre-bundled and ready to use!
-
 ---
 
 ## ✨ Features
@@ -307,15 +303,6 @@ This project is licensed under the MIT License - see [LICENSE](LICENSE) file for
 - [ ] Custom model fine-tuning
 - [ ] Plugin system
 - [ ] Voice input/output
-
----
-
-## 📊 Project Stats
-
-![GitHub release](https://img.shields.io/github/v/release/YOUR_USERNAME/garexsa-ui)
-![GitHub downloads](https://img.shields.io/github/downloads/YOUR_USERNAME/garexsa-ui/total)
-![GitHub stars](https://img.shields.io/github/stars/YOUR_USERNAME/garexsa-ui)
-![GitHub license](https://img.shields.io/github/license/YOUR_USERNAME/garexsa-ui)
 
 ---
 
