@@ -43,7 +43,6 @@ Garexsa UI is a desktop application that lets you chat with Google's Gemma 4 AI 
 |---------|------|----------------|----------|
 | **.deb Package** | 137.5 MB | ❌ No | [garexsa-ui_1.0.0_amd64.deb](../../releases) |
 
-**Note:** Non-portable versions require downloading the Gemma 4 model separately from [Kaggle](https://www.kaggle.com/models/google/gemma-4/tfLiteGemma4/gemma-4-e2b-it).
 
 ---
 
