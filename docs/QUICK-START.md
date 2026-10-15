@@ -81,6 +81,24 @@ https://www.kaggle.com/models/google/gemma-4/tfLiteGemma4/gemma-4-e2b-it
 
 ### Step 3: Place Model
 
+**Windows (Installer):**
+```
+C:\Users\<YourUsername>\AppData\Roaming\garexsa-ui\backend\models\
+```
+
+**Linux (.deb):**
+```
+~/.config/garexsa-ui/backend/models/
+```
+
+**Alternative (Both):**
+- Windows: `C:\Users\<YourUsername>\.litert-lm\models\`
+- Linux: `~/.litert-lm\models/`
+
+The app will detect models in either location.
+
+### Step 3: Place Model
+
 **Windows:**
 - Use "Garexsa Models Folder" desktop shortcut
 - Or navigate to: `C:\Users\YourName\AppData\Local\Programs\garexsa-ui\resources\backend\models\`

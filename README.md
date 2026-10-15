@@ -52,8 +52,8 @@ Garexsa UI is a desktop application that lets you chat with Google's Gemma 4 AI 
 ```
 1. Download GarexsaUI-Setup-1.0.0.exe
 2. Run the installer
-3. Download Gemma 4 model from Kaggle
-4. Place model in: C:\Program Files\garexsa-ui\resources\backend\models\
+3. Download Gemma 4 model from Kaggle (see below)
+4. Place model in: C:\Users\<YourUsername>\AppData\Roaming\garexsa-ui\backend\models\
 5. Launch "Garexsa UI" from Start Menu
 ```
 
@@ -62,12 +62,21 @@ Garexsa UI is a desktop application that lets you chat with Google's Gemma 4 AI 
 # Install
 sudo dpkg -i garexsa-ui_1.0.0_amd64.deb
 
-# Download model and place in:
-# /opt/garexsa-ui/resources/backend/models/
+# Download model from Kaggle (see below)
+# Place model in: ~/.config/garexsa-ui/backend/models/
 
 # Launch
 garexsa-ui
 ```
+
+### 📥 Download Gemma 4 Model
+
+1. Go to [Kaggle - Gemma 4 Model](https://www.kaggle.com/models/google/gemma-4/tfLiteGemma4/gemma-4-e2b-it)
+2. Download the `.litertlm` model file
+3. Extract and place the `gemma-4-E2B-it.litertlm` folder in the models directory (see above)
+
+**Alternative:** You can also place the model in `~/.litert-lm/models/` and the app will find it automatically.
+
 ---
 
 ## ✨ Features
@@ -128,7 +137,7 @@ garexsa-ui
 
 ### Clone Repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/garexsa-ui.git
+git clone https://github.com/Rohith-DR/garexsa-ui.git
 cd garexsa-ui
 ```
 

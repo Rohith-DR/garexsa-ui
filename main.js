@@ -13,6 +13,15 @@ app.commandLine.appendSwitch('disable-gpu-program-cache');
 if (process.platform === 'linux') {
   app.commandLine.appendSwitch('no-sandbox');
   console.log('[App] Running with --no-sandbox on Linux');
+  
+  // Disable GPU on Linux (causes crashes in WSL2 and some systems)
+  app.commandLine.appendSwitch('disable-gpu');
+  app.commandLine.appendSwitch('disable-software-rasterizer');
+  console.log('[App] GPU disabled for Linux compatibility');
+  
+  // Fix for WSL2 /dev/shm issues
+  app.commandLine.appendSwitch('disable-dev-shm-usage');
+  console.log('[App] Using alternative to /dev/shm for shared memory');
 }
 
 let mainWindow = null;
@@ -207,14 +216,17 @@ function startBackend() {
         if (models.length > 0) {
           console.log('[Backend] Found', models.length, 'model(s) in app folder:', models.join(', '));
         } else {
-          console.log('[Backend] WARNING: No models found in:', modelPath);
-          console.log('[Backend] Place litert-lm models in this folder to use them');
+          console.log('[Backend] No bundled models found in:', modelPath);
+          console.log('[Backend] The app will use models from ~/.litert-lm/models/');
+          console.log('[Backend] Download Gemma 4 model and place in:', modelPath);
         }
       } catch (err) {
         console.error('[Backend] Error listing models:', err.message);
       }
     } else {
-      console.log('[Backend] Models directory does not exist yet:', modelPath);
+      console.log('[Backend] Models directory does not exist (Lite version)');
+      console.log('[Backend] Download Gemma 4 model from Kaggle and place in:', modelPath);
+      console.log('[Backend] Or the app will check ~/.litert-lm/models/ for existing models');
     }
     
     // Symlink each model from our app folder to litert-lm's expected location
